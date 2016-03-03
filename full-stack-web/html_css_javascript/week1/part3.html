@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <style>
+        fieldset {border:10px solid yellow;background-color: lightyellow ;margin-bottom:10px; width:720px}
+        label {width:180px; display: inline-block; text-align: right; vertical-align: top}
+        .autowitdh {width:auto}
+        .rangetext {text-align: center;vertical-align:top; display: inline-block; width: 80px; color: white;}
+        .lowrangetext {background-color: red}
+        .highrangetext {background-color: purple}
+        textarea {width:360px ; height:50px}
+        label:hover { font-size:40px }
+        input:hover { font-size:40px }
+        select:hover { font-size:40px }
+        textarea:hover { font-size:40px }
+      </style>
+  </head>
+  <body>
+    <h2>Please Enter Your Details For Our Dating Website!</h2>
+    <form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="post" enctype="multipart/form-data">
+      <fieldset>
+        <legend>Your Face</legend>
+        <label for="avatar">Your Image:</label>
+        <input type="file" id="avatar" name="avatar" required></input><br/>
+        <label for="preview">Image Preview:</label>
+        <img id="preview"></img>
+      </fieldset>
+      <fieldset>
+        <legend>Your General Details</legend>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required/><br/>
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="Male" required/>
+        <label class="autowitdh" for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female" required/>
+        <label class="autowitdh" for="female">Female</label><br/>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required/><br/>
+        <label for="dob">Date of birth:</label>
+        <input type="date" id="dob" name="dob"/><br/>
+        <label for="favcolor">Favorite color:</label>
+        <input type="color" id="favcolor" name="favcolor"/><br/>
+        <label for="country">Which country:</label>
+        <select id="country" name="country">
+          <option value="">no selection</option>
+          <option value="US">United States</option>
+          <option value="UK">United Kingdom</option>
+          <option value="CN">China</option>
+          <option value="BR">Brazil</option>
+          <option value="RU">Russia</option>
+        </select>
+      </fieldset>
+      <fieldset>
+        <legend>Your Indicators</legend>
+        <label for="height">Height:</label>
+        <span class="rangetext lowrangetext">Short</span> <input type="range" id="height" name="height" min="0" max="100"/> <span class="rangetext highrangetext">Tall</span><br/>
+        <label for="salary">Salary:</label>
+        <span class="rangetext lowrangetext">Poor</span> <input type="range" id="salary" name="salary" min="0" max="100"/> <span class="rangetext highrangetext">Rich</span><br/>
+      </fieldset>
+      <fieldset>
+        <legend>Your Contact Information</legend>
+        <label for="mail">Email:</label>
+        <input type="email" id="mail" name="mail" required/><br/>
+        <label for="phone">Mobile:</label>
+        <input type="text" id="phone" name="phone"/><br/>
+        <label for="address">Address:</label>
+        <textarea rows="5" cols="60" id="address" name="address"></textarea><br/>
+        <label for="contactmethod">Method to contact you:</label>
+        <input type="checkbox" id="methodemail" name="contactmethod" value="email"/>
+        <label class="autowitdh" for="methodemail">Email</label>
+        <input type="checkbox" id="methodwhatsapp" name="contactmethod" value="whatsapp"/>
+        <label class="autowitdh" for="methodwhatsapp">Whatsapp</label>
+        <input type="checkbox" id="methodinappchat" name="contactmethod" value="inappchat"/>
+        <label class="autowitdh" for="methodinappchat">In-app chat</label>
+      </fieldset>
+
+      <input type="submit" value="Submit"/>
+    </form>
+    <script src="https://www.cse.ust.hk/~rossiter/dating_web_site.js"></script>
+  </body>
+</html>
