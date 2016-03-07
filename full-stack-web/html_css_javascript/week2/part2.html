@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <script>
+      var totalGuess = 1;
+      //
+      var colors = ['blue', 'cyan', 'gold', 'gray', 'green', 'magenta', 'orange', 'red', 'white', 'yellow', 'antiquewhite', 'aqua', 'bisque', 'chocolate', 'forestgreen'].sort();
+
+      function check_guess(guessColor, userInputColor){
+        var userInputColorIndex = colors.indexOf(userInputColor);
+        if (userInputColorIndex == -1){
+          alert("I don't recognize!\n\nPlease try again.");
+          totalGuess ++;
+          return false;
+        }else if (userInputColor == guessColor){
+          document.body.style.backgroundColor = guessColor;
+          alert("Congratulations! You have guessed the color!\n\nIt took you "
+                   + totalGuess + " guesses to finish the game!\n\n"
+                   + "You can see the color in the background.");
+          return true;
+        }else{
+          alert("Sorry, your guess is not correct!\n\n"
+                 + "Hint: your color is alphabetically "
+                 + ((userInputColor <= guessColor) ? "lower " : "higher ")
+                 + "than mine.\n\n"
+                 + "Please try again.");
+          totalGuess++;
+          return false;
+        }
+      }
+
+      function do_game(){
+        console.log(colors);
+        var radIdx = Math.floor(Math.random() * (colors.length)) - 1;
+        var guessColor = colors[radIdx];
+        console.log("Guess color is " + guessColor);
+
+        var promptStr = "I am thinking of one of these colors:\n\n"
+                       + colors.join() + "\n\n"
+                       + "What color am I thinking of?";
+        do{
+          var userInputColor = prompt(promptStr);
+          console.log("User Input Color is " + userInputColor);
+        }while(!check_guess(guessColor, userInputColor));
+    }
+    </script>  </head>
+  <body onload="do_game()">
+
+  </body>
+</html>

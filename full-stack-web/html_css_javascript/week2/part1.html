@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <script>
+    function do_game(){
+        var colors = ['blue', 'cyan', 'gold', 'gray', 'green', 'magenta', 'orange', 'red', 'white', 'yellow'];
+        console.log(colors);
+        var radIdx = Math.floor(Math.random() * (colors.length)) - 1;
+        var guessColor = colors[radIdx];
+        alert("Guess color is " + guessColor);
+
+        var promptStr = "I am thinking of one of these colors:\n\n"
+                       + colors.join() + "\n\n"
+                       + "What color am I thinking of?";
+        var finish = false;
+        var totalGuess = 1;
+        do{
+          var userInputColor = prompt(promptStr);
+          console.log("User Input Color is " + userInputColor);
+          var userInputColorIndex = colors.indexOf(userInputColor);
+          if (userInputColor == guessColor){
+            document.body.style.backgroundColor = guessColor;
+            alert("Congratulations! You have guessed the color!\n\nIt took you "
+                     + totalGuess + " guesses to finish the game!\n\n"
+                     + "You can see the color in the background.");
+            finish = true;
+          }else{
+            totalGuess++;
+          }
+        }while(!finish);
+    }
+    </script>
+  </head>
+  <body onload="do_game()">
+
+  </body>
+</html>
