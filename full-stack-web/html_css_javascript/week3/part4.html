@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Matching Game</title>
+    <style>
+      #leftSide {
+        position: absolute;
+        left: 0px;
+        width: 500px;
+        height: 500px;
+      }
+      #rightSide {
+        position: absolute;
+        left: 500px;
+        width: 500px;
+        height: 500px;
+        border-left: 1px solid black
+      }
+      img {position:absolute}
+    </style>
+    <script>
+      var total_img_count = 5;
+      //100 is the smile png width and height
+      var panel_height = 500 - 100;
+      var panel_width = 500 - 100;
+
+      function nextLevel(event){
+        event.stopPropagation();
+        total_img_count += 5;
+        generateFaces();
+      }
+
+      function gameOver(){
+        alert("Game Over!");
+
+        document.getElementById("theBody").removeEventListener("click", gameOver);
+        document.getElementById("leftSide").lastChild.removeEventListener("click", nextLevel);
+      }
+
+      function generateFaces(){
+        var leftSideDiv = document.getElementById("leftSide");
+        var rightSideDiv = document.getElementById("rightSide");
+
+        while (leftSideDiv.firstChild){
+          leftSideDiv.removeChild(leftSideDiv.firstChild);
+        }
+        while (rightSideDiv.firstChild) {
+          rightSideDiv.removeChild(rightSideDiv.firstChild);
+        }
+
+        var leftSideImages = new Array();
+        for (var index = 0; index < total_img_count; index++){
+          var imgEle = document.createElement("img");
+          imgEle.src = "http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
+          imgEle.style.left = Math.floor(Math.random() * panel_width) + "px";
+          imgEle.style.top = Math.floor(Math.random() * panel_height) + "px";
+          leftSideDiv.appendChild(imgEle);
+          leftSideImages.push(imgEle);
+        }
+        leftSideDiv.lastChild.addEventListener("click", nextLevel);
+
+        var duplicateDiv = leftSideDiv.cloneNode(false);
+        var rightSideImsages = leftSideImages.slice(0, leftSideImages.length - 1);
+        for (var rightSideImage of rightSideImsages){
+          duplicateDiv.appendChild(rightSideImage.cloneNode(false));
+        }
+        rightSideDiv.appendChild(duplicateDiv);
+      }
+
+      function onLoad(){
+        document.getElementById("theBody").addEventListener("click", gameOver);
+        generateFaces();
+      }
+    </script>
+  </head>
+
+  <body onload="onLoad()" id="theBody">
+    <h2>Matching Game</h2><br/>
+    <p>Click on the extra smiling face on the left.</p><br/>
+    <div id="leftSide">
+    </div>
+    <div id="rightSide">
+    </div>
+  </body>
+</html>

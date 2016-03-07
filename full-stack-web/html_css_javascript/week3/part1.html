@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Matching Game</title>
+    <style>
+      #leftSide {
+        position: absolute;
+        left: 0px;
+        width: 500px;
+        height: 500px;
+      }
+      #rightSide {
+        position: absolute;
+        left: 500px;
+        width: 500px;
+        height: 500px;
+        border-left: 1px solid black
+      }
+    </style>
+    <script>
+      var total_img_count = 5;
+      //100 is the smile png width and height
+      var panel_height = 500 - 100;
+      var panel_width = 500 - 100;
+      function generateLeftSide(){
+        var leftSideDiv = document.getElementById("leftSide");
+        var existingImgs = leftSideDiv.getElementsByName("img");
+        for (var node of existingImgs){
+          leftSideDiv.removeChild(node);
+        }
+        
+        for (var index = 0; index < total_img_count; index++){
+          var imgEle = document.createElement("img");
+          img.src = "http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
+          leftSideDiv.appendChild(img);
+        }
+      }
+
+      function drawGame(){
+
+      }
+    </script>
+  </head>
+  <body onload="drawGame()">
+    <h2>Matching Game</h2><br/>
+    <p>Click on the extra smiling face on the left.</p><br/>
+    <div id="leftSide">
+    </div>
+    <div id="rightSide">
+    </div>
+  </body>
+</html>
